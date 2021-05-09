@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.test.app.data.db.entity.CartProduct" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/std_margin"
+        android:maxHeight="@dimen/cart_row_height"
+        android:minHeight="@dimen/cart_row_height">
+
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/description"
+            app:downloadUrl='@{item.imgUrl}'
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_gift_box" />
+
+        <TextView
+            android:id="@+id/productName"
+            style="@style/BlackStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_short_margin"
+            android:layout_marginTop="@dimen/std_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text='@{item.productName}'
+            app:layout_constraintStart_toEndOf="@id/productImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Product Name" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <TextView
+            android:id="@+id/productPrice"
+            style="@style/BlackStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background='@{item.discountPrice != -1 ? @drawable/line : null}'
+            android:text='@{item.price+"$"}'
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="@id/productName"
+            tools:text="1200" />
+
+        <TextView
+            android:id="@+id/productDiscountPrice"
+            style="@style/BlackStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_short_margin"
+            android:text='@{item.discountPrice != -1 ? item.discountPrice+"$" : ""}'
+            app:layout_constraintStart_toEndOf="@id/productPrice"
+            app:layout_constraintTop_toTopOf="@id/productPrice"
+            tools:text="1200" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

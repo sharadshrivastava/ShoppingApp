@@ -115,6 +115,7 @@ class ProductsListFragment : Fragment(), ItemClickListener {
     private fun observeCartCount() {
         lifecycleScope.launchWhenStarted {
             productsListViewModel.entryCount()?.collect {
+                cartBadge?.visibility = if(it == 0) View.GONE else View.VISIBLE
                 cartBadge?.text = (it).toString()
             }
         }

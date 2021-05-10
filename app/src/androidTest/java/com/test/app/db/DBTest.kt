@@ -59,8 +59,11 @@ class DBTest {
     @Test
     fun testDBEntries() {
         runBlocking {
-            val count = productsDao.entryCount()
-            Assert.assertTrue(count == 1)
+            withContext(Dispatchers.Main) {
+                val count = productsDao.entryCount().asLiveData().observeForever {
+                    Assert.assertTrue(it == 1)
+                }
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class EmployeesListFragmentTest {
+class ProductsListFragmentTest {
 
     @get:Rule
     val rule = ActivityScenarioRule(ShoppingActivity::class.java)
@@ -54,20 +54,20 @@ class EmployeesListFragmentTest {
 
     @Test
     fun testListItemsCount() {
-        onView(withId(R.id.productsList)).check(matches(hasItemCount(11)))
+        onView(withId(R.id.productsList)).check(matches(hasItemCount(12)))
     }
 
     @Test
     fun testListFirstItem() {
         onView(withId(R.id.productsList))
-            .check(matches(viewAtPosition(0, hasDescendant(withText("Alaina Daly")))));
+            .check(matches(viewAtPosition(0, hasDescendant(withText("Nintendo Switch")))));
     }
 
     @Test
     fun testListLastItem() {  //first scroll till last and then check item.
         onView(withId(R.id.productsList))
-            .perform(scrollToPosition<RecyclerView.ViewHolder>(10))
-            .check(matches(viewAtPosition(10, hasDescendant(withText("Tim Nakamura")))));
+            .perform(scrollToPosition<RecyclerView.ViewHolder>(11))
+            .check(matches(viewAtPosition(11, hasDescendant(withText("X-Bows Ergonomic")))));
     }
 
     @Test
@@ -82,3 +82,6 @@ class EmployeesListFragmentTest {
         //If on click something is shown/launch then we can assert that here.
     }
 }
+
+// Not writing unit test cases for CartFragment as that gonna be as same as this one.
+// In this test app, intention is show the way of writing unit testcases rather than having full coder coverage.

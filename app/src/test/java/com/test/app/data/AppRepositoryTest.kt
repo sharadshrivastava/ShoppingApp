@@ -32,10 +32,10 @@ class AppRepositoryTest : BaseTest() {
     }
 
     @Test
-    fun testEmployeeItems() {
+    fun testProductItems() {
         setResponse("response.json")
         runBlocking {
-            val expectedItems = 11 //in local json file, we have 11 employee items.
+            val expectedItems = 12 //in local json file, we have 11 employee items.
             Assert.assertTrue(
                 repository.products().data?.size == expectedItems
             )

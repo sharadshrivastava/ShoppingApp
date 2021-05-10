@@ -15,5 +15,5 @@ class CartViewModel @Inject constructor(
 
     var totalPrice = dataUseCase.totalPrice()?.asLiveData()
 
-    var cartProducts = useCase.cartProducts()?.asLiveData()
+    var cartProducts = useCase.cartProducts()?.asLiveData() //converting it to liveData as it has to be observed by data binding.
 }

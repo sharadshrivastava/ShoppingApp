@@ -26,6 +26,8 @@ class AppRepositoryImpl @Inject constructor(
 
     override fun entryCount() = dao?.entryCount()
 
+    override fun totalPrice() = dao?.totalPrice()
+
     override suspend fun insertProduct(cartProduct: CartProduct) {
         dao?.insertProduct(cartProduct)
     }

@@ -16,6 +16,9 @@ interface ProductsDao {
     @Query("SELECT count(*) FROM CartProduct")
     fun entryCount(): Flow<Int>
 
+    @Query("SELECT sum(CASE WHEN discount_price == -1 THEN price ELSE discount_price END) FROM CartProduct")
+    fun totalPrice(): Flow<Double>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertProduct(cartProduct: CartProduct)
 

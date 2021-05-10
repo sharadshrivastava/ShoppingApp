@@ -37,7 +37,7 @@ object AppModule {
         val interceptor =  HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder().addInterceptor(interceptor)
-            .addInterceptor(MockInterceptor()) //This is for offline data testing.
+            .addInterceptor(MockInterceptor()) //This is for offline data.
             .build()
     }
 

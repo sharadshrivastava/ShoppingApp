@@ -10,6 +10,8 @@ class DataUseCase @Inject constructor(private val repository: AppRepositoryImpl)
 
     fun entryCount() = repository.entryCount()
 
+    fun totalPrice() = repository.totalPrice()
+
     suspend fun insertProduct(cartProduct: CartProduct) {
         repository.insertProduct(cartProduct)
     }

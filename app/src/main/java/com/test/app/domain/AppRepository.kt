@@ -13,5 +13,7 @@ interface AppRepository {
 
     fun entryCount(): Flow<Int>?
 
+    fun totalPrice(): Flow<Double>?
+
     suspend fun insertProduct(cartProduct: CartProduct)
 }
